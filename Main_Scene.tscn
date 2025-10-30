@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bylaxtycxqyvr"]
+
+[ext_resource type="Script" uid="uid://bpn3d0xm73qq0" path="res://player.gd" id="1_8sucx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sucx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fr83"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkmsp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yw3w"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7fr83"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8sucx"]
+
+[node name="Main Scene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.39443618, -0.06733899, 0.91645277, 0.43301272, 0.8660254, 0.24999999, -0.81050605, 0.49544474, -0.31243312, 4.143056, 2.5831473, -2.963196)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(10, 0.5, 10)
+material = SubResource("StandardMaterial3D_8sucx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 2.9858725, 1.8651009, 5.1264014)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.955623, 1.5111997, 0.28845572)
+use_collision = true
+size = Vector3(1, 2.5, 1)
+material = SubResource("StandardMaterial3D_7fr83")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7118734, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_tkmsp")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9163797, 0, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_5yw3w")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9824294, 1.8651009, 1.2934666)
+script = ExtResource("1_8sucx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_7fr83")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67131007, 0.23099065, 1.3843153)
+mesh = SubResource("CapsuleMesh_8sucx")
